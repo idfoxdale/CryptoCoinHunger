@@ -8,8 +8,14 @@ from hashlib import sha256
 def SHA256(text):
     return sha256(text.encode("ascii")).hexdigest()
 
-def mine():
-    pass
+#guess iterating block
+def mine(block_number, transactions, previous_hash, prefix_zeros):
+    #hardcoding nonce initially 1
+    nonce=1
+    #defing the entire text block as string
+    text = str(block_number) + transactions + previous_hash + str(nonce)
+    new_hash = SHA256(text)
+    return new_hash
 
 
 if __name__ == '__main__':
@@ -18,6 +24,8 @@ if __name__ == '__main__':
     Jack->Jill->36
     '''
 
-    new_hash = mine(transactions)
+    difficulty = 4
+
+    new_hash = mine(5, transactions, '0000000xa036944e29568d0cff17edbe038f81208fecf9a66be9a2b8321c6ec7', difficulty )
 
     print(new_hash)
