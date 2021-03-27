@@ -8,6 +8,16 @@ from hashlib import sha256
 def SHA256(text):
     return sha256(text.encode("ascii")).hexdigest()
 
+def mine():
+    pass
+
+
 if __name__ == '__main__':
     transactions='''
-    
+    Ishann->Kumar->27,
+    Jack->Jill->36
+    '''
+
+    new_hash = mine(transactions)
+
+    print(new_hash)
